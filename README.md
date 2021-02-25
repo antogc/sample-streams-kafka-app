@@ -36,9 +36,11 @@ In that case we use Reactor API (Sink and Flux) to send messages to the destinat
 A Functional Bean defines the source splitting. The function type is:  
     ```Function<KStream<String, ActingEvent>, KStream<String, ActingEvent>[]>```
     
-org.apache.kafka.streams.kstream is an abstraction of a record stream. 
- 
-It is required to provide some configurations: 
+org.apache.kafka.streams.kstream is an abstraction of a record stream.
+
+It is required to provide some configurations:
+- avro schema for our record type 
 - schema.registry url
+- serder for key (kafka common StringSerde) and value (avro SpecificAvroSerde)
 - binder configuration (kafka.streams)
 - output destinations
